@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using RabbitMQ.Client;
 using System.Collections.Generic;
-using Constants = BHub.Api.Environments.Constants;
+using Constants = BHub.Infra.Environments.Constants;
 
 namespace BHub.Api
 {
@@ -44,7 +44,7 @@ namespace BHub.Api
             services.RegisterHealthChecks();
 
             services.AddControllers();
-            services.AddSwaggerConfig("ApiGeracaoBoletimPreco", "Api para criar novo boletim a partir da fila no rabbitmq.");
+            services.AddSwaggerConfig("BHubApi", "Api para incluir um novo cliente a partir da fila no rabbitmq.");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +60,7 @@ namespace BHub.Api
                         swaggerDoc.Servers = new List<OpenApiServer> { new() { Url = Constants.APP_URL } };
                     });
                 });
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "PriceMonitoring.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "BHub.Api v1"));
             }
 
             app.UseCors("AllowAll");

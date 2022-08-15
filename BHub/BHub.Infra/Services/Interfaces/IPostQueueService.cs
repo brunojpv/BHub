@@ -1,7 +1,7 @@
 ﻿using BHub.Domain.Dtos;
 using System.Threading.Tasks;
 
-namespace BHub.Domain.Interfaces
+namespace BHub.Infra.Services.Interfaces
 {
     public interface IPostQueueService
     {

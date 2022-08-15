@@ -1,12 +1,12 @@
 ﻿using BHub.Domain.Dtos;
-using BHub.Domain.Interfaces;
+using BHub.Infra.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using System;
 using System.Text;
 using System.Threading.Tasks;
-using Constants = BHub.Api.Environments.Constants;
+using Constants = BHub.Infra.Environments.Constants;
 
 namespace BHub.Infra.Services.ManageQueue
 {

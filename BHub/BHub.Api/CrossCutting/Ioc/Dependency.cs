@@ -1,8 +1,8 @@
-﻿using BHub.Api.Environments;
-using BHub.Domain.Interfaces;
-using BHub.Infra.Services.ManageQueue;
-using BHub.Infra.Data.Connection.Factories;
+﻿using BHub.Infra.Data.Connection.Factories;
 using BHub.Infra.Data.Connection.Factories.Interfaces;
+using BHub.Infra.Environments;
+using BHub.Infra.Services.Interfaces;
+using BHub.Infra.Services.ManageQueue;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;

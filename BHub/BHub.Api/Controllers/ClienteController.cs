@@ -1,6 +1,6 @@
 ﻿using BHub.Domain.Dtos;
-using BHub.Domain.Interfaces;
 using BHub.Domain.Models;
+using BHub.Infra.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;

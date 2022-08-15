@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BHub.Api.Environments
+namespace BHub.Infra.Environments
 {
     public static class Env
     {

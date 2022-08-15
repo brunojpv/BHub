@@ -1,4 +1,4 @@
-﻿namespace BHub.Api.Environments
+﻿namespace BHub.Infra.Environments
 {
     public static class Constants
     {
@@ -19,6 +19,6 @@
         public static readonly string PORT_RABBITMQ = Env.Get("PORT_RABBITMQ");
         public static readonly string NAME_EXCHANGE_RABBITMQ = Env.Get("NAME_EXCHANGE_RABBITMQ");
 
-        public static readonly string APPLICATION_NAME = "api-pricemonitoring";
+        public static readonly string APPLICATION_NAME = "BHub";
     }
 }

@@ -37,7 +37,22 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APP_URL": "/",
+        "DATABASE_NAME": "BHub",
+        "DATABASE_HOST": "localhost",
+        "DATABASE_USER": "sa",
+        "DATABASE_PASS": "Bjpv@1982",
+        "SMTP_USERNAME": "cosmos@pmenos.com.br",
+        "DOTNET_ENVIRONMENT": "Development",
+        "SMTP_USER_PASSWORD": "asd.1234",
+        "USERNAME_RABBITMQ": "guest",
+        "PASSWORD_RABBITMQ": "guest",
+        "SMTP_SERVER_ADDRESS": "smtp.pmenos.com.br",
+        "NAME_QUEUE_RABBITMQ": "precos-produto-filial",
+        "NAME_EXCHANGE_RABBITMQ": "precos-produto-filial-exchange",
+        "HOST_RABBITMQ": "localhost",
+        "PORT_RABBITMQ": "5672"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
