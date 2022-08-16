@@ -26,8 +26,8 @@
         "USERNAME_RABBITMQ": "noderedhomo",
         "PASSWORD_RABBITMQ": "7ly8zd60Pi2Q",
         "SMTP_SERVER_ADDRESS": "smtp.pmenos.com.br",
-        "NAME_QUEUE_RABBITMQ": "precos-produto-filial",
-        "NAME_EXCHANGE_RABBITMQ": "precos-produto-filial-exchange",
+        "NAME_QUEUE_RABBITMQ": "BHub_Queues",
+        "NAME_EXCHANGE_RABBITMQ": "BHub_Exchange",
         "HOST_RABBITMQ": "localhost",
         "PORT_RABBITMQ": "5672"
       }
@@ -49,8 +49,8 @@
         "USERNAME_RABBITMQ": "guest",
         "PASSWORD_RABBITMQ": "guest",
         "SMTP_SERVER_ADDRESS": "smtp.pmenos.com.br",
-        "NAME_QUEUE_RABBITMQ": "precos-produto-filial",
-        "NAME_EXCHANGE_RABBITMQ": "precos-produto-filial-exchange",
+        "NAME_QUEUE_RABBITMQ": "bhub_queue",
+        "NAME_EXCHANGE_RABBITMQ": "bhub_exchange",
         "HOST_RABBITMQ": "localhost",
         "PORT_RABBITMQ": "5672"
       },
