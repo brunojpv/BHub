@@ -1,3 +1,7 @@
+using BHub.Domain.Interfaces.Repositories;
+using BHub.Domain.Interfaces.Services;
+using BHub.Domain.Repositories;
+using BHub.Domain.Services;
 using BHub.Domain.Services.Interfaces;
 using BHub.Domain.Services.ManageQueue;
 using BHub.Infra.Data.Connection.Factories;
@@ -36,11 +40,14 @@ namespace BHub.Worker
                         UserName = Constants.USERNAME_RABBITMQ,
                         Password = Constants.PASSWORD_RABBITMQ
                     });
-                    SqlConnectionFactory factory = new(Constants.APPLICATION_NAME, Constants.HOST, Constants.DATABASE,
-                     Constants.USER, Constants.PASS, 0);
+
+                    SqlConnectionFactory factory = new(Constants.APPLICATION_NAME, Constants.HOST, Constants.DATABASE, Constants.USER, Constants.PASS, 0);
+
                     services.AddSingleton<IDbConnectionFactory>(c => factory);
 
                     services.AddSingleton<IConsumerQueueService, ConsumerQueueService>();
+                    services.AddSingleton<IClienteRepository, ClienteRepository>();
+                    services.AddSingleton<IClienteService, ClienteService>();
 
                     services.AddHostedService<Worker>();
                 });
