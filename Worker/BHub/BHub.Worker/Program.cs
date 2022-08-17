@@ -1,7 +1,7 @@
+using BHub.Domain.Services.Interfaces;
+using BHub.Domain.Services.ManageQueue;
 using BHub.Infra.Data.Connection.Factories;
 using BHub.Infra.Data.Connection.Factories.Interfaces;
-using BHub.Infra.Services.Interfaces;
-using BHub.Infra.Services.ManageQueue;
 using Elastic.Apm.NetCoreAll;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

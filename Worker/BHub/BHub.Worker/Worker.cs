@@ -1,4 +1,4 @@
-using BHub.Infra.Services.Interfaces;
+using BHub.Domain.Services.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;

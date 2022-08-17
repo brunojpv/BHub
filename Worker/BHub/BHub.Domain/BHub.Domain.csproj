@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Repositories\" />
+    <ProjectReference Include="..\BHub.Infra\BHub.Infra.csproj" />
   </ItemGroup>
 
 </Project>

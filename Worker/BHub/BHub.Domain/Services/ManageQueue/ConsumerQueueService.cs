@@ -1,5 +1,6 @@
 ﻿using BHub.Domain.Dtos;
-using BHub.Infra.Services.Interfaces;
+using BHub.Domain.Interfaces.Services;
+using BHub.Domain.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
@@ -10,26 +11,26 @@ using System.Threading;
 using System.Threading.Tasks;
 using Constants = BHub.Infra.Environments.Constants;
 
-namespace BHub.Infra.Services.ManageQueue
+namespace BHub.Domain.Services.ManageQueue
 {
     public class ConsumerQueueService : IConsumerQueueService
     {
         private ILogger<ConsumerQueueService> logger;
-        //private readonly ICreateBulletinService createBulletinService;
+        private readonly IClienteService clienteService;
         private readonly IConnectionFactory connectionFactory;
 
         public ConsumerQueueService(ILogger<ConsumerQueueService> _logger,
-            //ICreateBulletinService _createBulletinService,
+            IClienteService _clienteService,
             IConnectionFactory _connectionFactory)
         {
             logger = _logger;
-            //createBulletinService = _createBulletinService;
+            clienteService = _clienteService;
             connectionFactory = _connectionFactory;
         }
 
         public async Task ExecuteConsumer()
         {
-            logger.LogInformation("Iniciando consumo da fila de Geração do Boletim.");
+            logger.LogInformation("Iniciando consumo da fila de inclusao do Cliente.");
 
             using (var connection = connectionFactory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -48,29 +49,28 @@ namespace BHub.Infra.Services.ManageQueue
                         var obj = JsonConvert.DeserializeObject<TemplateRabbitClienteDto>(message);
                         Console.WriteLine(" [x] Recebido {0}", message);
 
-                        var resp = true;// await createBulletinService.ExecuteCreationBolletin(obj);
+                        var resp = await clienteService.ExecuteCreationCliente(obj);
 
                         if (resp)
                         {
                             channel.BasicAck(ea.DeliveryTag, false);
-                            logger.LogInformation($"Foi feita com sucesso a migração do Cliente {obj.RazaoSocial}!");
+                            logger.LogInformation($"Foi feita com sucesso a inclusao do Cliente {obj.RazaoSocial}!");
                         }
                         else
                         {
-                            logger.LogError($"Erro na migração do Cliente {obj.RazaoSocial}! Item de volta á fila.");
+                            logger.LogError($"Erro na inclusao do Cliente {obj.RazaoSocial}! Item de volta á fila.");
                             channel.BasicNack(ea.DeliveryTag, false, true);
                         }
                     }
                     catch (Exception ex)
                     {
-                        logger.LogError($"Erro na criação do Boletim! Item de volta á fila. Error: {ex.Message}");
+                        logger.LogError($"Erro na inclusao do Cliente! Item de volta á fila. Error: {ex.Message}");
                         channel.BasicNack(ea.DeliveryTag, false, true);
                     }
                 };
                 Thread.Sleep(Timeout.Infinite);
             }
-            logger.LogInformation(
-                "Finalizando consumo da fila de Geração do Boletim. Fila aguardando novas inserções...");
+            logger.LogInformation("Finalizando consumo da fila de inclusao do Cliente. Fila aguardando novas inserções...");
         }
     }
 }

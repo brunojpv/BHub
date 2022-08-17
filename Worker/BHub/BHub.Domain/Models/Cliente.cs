@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BHub.Domain.Dtos
+namespace BHub.Domain.Models
 {
-    public class TemplateRabbitClienteDto
+    public class Cliente
     {
         public int Id { get; set; }
         public string RazaoSocial { get; set; }

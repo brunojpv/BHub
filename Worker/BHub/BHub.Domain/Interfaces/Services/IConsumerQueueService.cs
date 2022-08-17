@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BHub.Infra.Services.Interfaces
+namespace BHub.Domain.Services.Interfaces
 {
     public interface IConsumerQueueService
     {
