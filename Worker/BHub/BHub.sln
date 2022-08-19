@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHub.Worker", "BHub.Worker\BHub.Worker.csproj", "{60E3E4B2-5EA9-4DD9-8080-35CC42EAFAC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BHub.Worker", "BHub.Worker\BHub.Worker.csproj", "{60E3E4B2-5EA9-4DD9-8080-35CC42EAFAC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHub.Infra", "BHub.Infra\BHub.Infra.csproj", "{1EE8CAEE-E1CC-45F9-9161-94AFC499A6D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BHub.Infra", "BHub.Infra\BHub.Infra.csproj", "{1EE8CAEE-E1CC-45F9-9161-94AFC499A6D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHub.Domain", "BHub.Domain\BHub.Domain.csproj", "{B32024C9-C9F7-4165-99A3-6F35595CA44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BHub.Domain", "BHub.Domain\BHub.Domain.csproj", "{B32024C9-C9F7-4165-99A3-6F35595CA44D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BHub.Test", "BHub.Test\BHub.Test.csproj", "{1896C29A-0F31-460F-AC38-EB8A4EDCBAD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B32024C9-C9F7-4165-99A3-6F35595CA44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B32024C9-C9F7-4165-99A3-6F35595CA44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B32024C9-C9F7-4165-99A3-6F35595CA44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1896C29A-0F31-460F-AC38-EB8A4EDCBAD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1896C29A-0F31-460F-AC38-EB8A4EDCBAD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1896C29A-0F31-460F-AC38-EB8A4EDCBAD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1896C29A-0F31-460F-AC38-EB8A4EDCBAD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

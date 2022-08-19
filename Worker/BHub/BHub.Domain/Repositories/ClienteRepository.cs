@@ -21,7 +21,7 @@ namespace BHub.Domain.Repositories
             try
             {
                 using var connection = connectionFactory.CreateConnectionOpened();
-                var produtoFilial = await connection.QueryFirstAsync<Cliente>(@"Select * From Cliente Where Id = @Id", new { id }, commandTimeout: 0);
+                var produtoFilial = await connection.QueryFirstOrDefaultAsync<Cliente>(@"Select Id, RazaoSocial, Telefone, Endereco, DataCadastro, Faturamento From Clientes Where Id = @Id", new { id }, commandTimeout: 0);
                 connection.Close();
 
                 return produtoFilial;
@@ -32,12 +32,13 @@ namespace BHub.Domain.Repositories
             }
         }
 
-        public async Task CreateCliente(int id, string razaoSocial, string telefone, string endereco, decimal faturamento)
+        public async Task CreateCliente(string razaoSocial, string telefone, string endereco, decimal faturamento)
         {
             try
             {
                 using var connection = connectionFactory.CreateConnectionOpened();
-                await connection.ExecuteAsync(@"Insert Into Clientes Values(@Id, @RazaoSocial, @Telefone, @Endereco, GetDate(), @Faturamento)", new { id, razaoSocial, telefone, endereco, faturamento }, commandTimeout: 0);
+                await connection.ExecuteAsync(@"Insert Into Clientes (RazaoSocial, Telefone, Endereco, Faturamento)
+                                                Values(@RazaoSocial, @Telefone, @Endereco, @Faturamento)", new { razaoSocial, telefone, endereco, faturamento }, commandTimeout: 0);
                 connection.Close();
             }
             catch (Exception ex)

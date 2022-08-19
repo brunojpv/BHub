@@ -1,6 +1,7 @@
 ﻿using BHub.Domain.Dtos;
 using BHub.Domain.Interfaces.Repositories;
 using BHub.Domain.Interfaces.Services;
+using BHub.Infra.Extension.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -11,10 +12,12 @@ namespace BHub.Domain.Services
     {
         private readonly ILogger<ClienteService> logger;
         private readonly IClienteRepository clienteRepository;
+        private IMailExtension mailExtension { get; }
 
-        public ClienteService(ILogger<ClienteService> logger, IClienteRepository clienteRepository)
+        public ClienteService(ILogger<ClienteService> logger, IMailExtension mailExtension, IClienteRepository clienteRepository)
         {
             this.logger = logger;
+            this.mailExtension = mailExtension;
             this.clienteRepository = clienteRepository;
         }
 
@@ -26,9 +29,11 @@ namespace BHub.Domain.Services
 
                 var produtoFilial = await clienteRepository.SearchClienteById(templateRabbitClienteDto.Id);
 
-                if (produtoFilial.Id == 0)
+                if (produtoFilial == null)
                 {
-                    await clienteRepository.CreateCliente(templateRabbitClienteDto.Id, templateRabbitClienteDto.RazaoSocial, templateRabbitClienteDto.Telefone, templateRabbitClienteDto.Endereco, templateRabbitClienteDto.Faturamento);
+                    await clienteRepository.CreateCliente(templateRabbitClienteDto.RazaoSocial, templateRabbitClienteDto.Telefone, templateRabbitClienteDto.Endereco, templateRabbitClienteDto.Faturamento);
+
+                    mailExtension.SendMail(templateRabbitClienteDto.RazaoSocial);
 
                     return true;
                 }

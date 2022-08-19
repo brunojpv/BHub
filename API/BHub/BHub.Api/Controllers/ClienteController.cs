@@ -22,7 +22,7 @@ namespace BHub.Api.Controllers
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> MigrationPrice([FromBody] TemplateRabbitClienteDto request)
+        public async Task<IActionResult> CreateCliente([FromBody] TemplateRabbitClienteDto request)
         {
             try
             {
