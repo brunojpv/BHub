@@ -15,18 +15,19 @@ namespace BHub.Infra.Extension
 
             var mail = new MailMessage
             {
-                From = new MailAddress(user)
+                From = new MailAddress(user, "Bruno Vieira", System.Text.Encoding.UTF8)
             };
+            
             var resultado = string.Join(",", cliente);
-            mail.CC.Add("brunojpv@outlook.com");
-            mail.Subject = "Clientes Inseridos com Sucesso !";
+            
+            mail.To.Add("brunojpv@outlook.com");
+            mail.Subject = "Clientes Inseridos com Sucesso!";
             mail.IsBodyHtml = true;
-            mail.Body =
-                $"<h3>Olá,</h3>  <p>Foram inseridos os clientes:  <b>{resultado}</b>. ";
+            mail.Body = $"<h3>Olá,</h3>  <p>Foram inseridos os clientes:  <b>{resultado}</b>. ";
 
             SmtpClient client = new(email)
             {
-                EnableSsl = false,
+                EnableSsl = true,
                 Port = 587,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
